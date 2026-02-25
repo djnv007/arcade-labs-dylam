@@ -34,16 +34,26 @@ arcade.draw_circle_filled(100, 463, 30, arcade.color.CANARY_YELLOW)
 #pomo puerta
 arcade.draw_circle_filled(450, 260, 5, arcade.color.BLACK)
 #coche
-arcade.draw_polygon_filled([[40, 150], [80, 200], [180, 200], [230, 150]], arcade.color.COFFEE)
-arcade.draw_rect_filled(arcade.XYWH(155, 120, 300, 60), arcade.color.COFFEE)
-arcade.draw_circle_filled(50, 90, 30, arcade.color.BLACK)#rueda trasera
-arcade.draw_circle_filled(50, 90, 20, arcade.color.WHITE)#rueda trasera parte arriba
-arcade.draw_circle_filled(230, 90, 30, arcade.color.BLACK)#rueda delantera
-arcade.draw_circle_filled(230, 90, 20, arcade.color.WHITE)#rueda delantera parte arriba
-arcade.draw_polygon_filled([[60, 150], [90, 190], [170, 190], [210, 150]], arcade.color.CELESTE) #ventana coche
-arcade.draw_polygon_outline([[60, 150], [90, 190], [170, 190], [210, 150]], arcade.color.BLACK, 2.5) #ventana coche delineado1
-arcade.draw_line(130, 150, 130, 190, arcade.color.BLACK, 2.5) #ventana coche delineado2
-
+def dibujar_coche(x: int, y: int, escala: float) -> None:
+    
+    arcade.draw_polygon_filled([[x+40*escala, y+150*escala], [x+80*escala, y+200*escala], [x+180*escala, y+200*escala], [x+230*escala, y+150*escala]], arcade.color.COFFEE)
+    arcade.draw_rect_filled(arcade.XYWH(155+x*escala, 120+y*escala, 300*escala, 60*escala), arcade.color.COFFEE)
+    arcade.draw_circle_filled(x+50*escala, y+90*escala, 30*escala, arcade.color.BLACK)#rueda trasera
+    arcade.draw_circle_filled(x+50*escala, y+90*escala, 20*escala, arcade.color.WHITE)#rueda trasera parte arriba
+    arcade.draw_circle_filled(x+230*escala, y+90*escala, 30*escala, arcade.color.BLACK)#rueda delantera
+    arcade.draw_circle_filled(x+230*escala, y+90*escala, 20*escala, arcade.color.WHITE)#rueda delantera parte arriba
+    arcade.draw_polygon_filled([[x+60*escala, y+150*escala], [x+90*escala, y+190*escala], [x+170*escala, y+190*escala], [x+210*escala, y+150*escala]], arcade.color.CELESTE) #ventana coche
+    arcade.draw_polygon_outline([[x+60*escala, y+150*escala], [x+90*escala, y+190*escala], [x+170*escala, y+190*escala], [x+210*escala, y+150*escala]], arcade.color.BLACK, 2.5) #ventana coche delineado1
+    arcade.draw_line(x+130*escala, y+150*escala, x+130*escala, y+190*escala, arcade.color.BLACK, 2.5) #ventana coche delineado2
+# Lista de coches: (x, y, escala)
+lista_coches = [
+    (50, 100, 1),   # Coche al fondo (pequeño)
+    (300, 120, 1),  # Coche mediano
+    (600, 50, 1),   # Coche en primer plano (grande)
+    (150, 250, 1)   # Otro coche pequeño
+]
+for x, y,escala in lista_coches:
+    dibujar_coche(x, y, escala)
 
 arcade.finish_render()
 arcade.run()
