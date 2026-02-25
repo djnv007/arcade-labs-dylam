@@ -24,7 +24,7 @@ arcade.draw_lrbt_rectangle_filled(0, 800, 0, 200, arcade.color.BITTER_LIME)
 # --- Draw the barn ---
 
 # Barn cement base
-arcade.draw_lrbt_rectangle_filled(30, 350, 170, 210, arcade.color.BISQUE)
+arcade.draw_lrbt_rectangle_filled(30, 350, 170, 250, arcade.color.BISQUE)
 
 # Bottom half
 arcade.draw_lrbt_rectangle_filled(30, 350, 210, 350, arcade.color.BROWN)
