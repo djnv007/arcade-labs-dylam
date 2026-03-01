@@ -47,10 +47,10 @@ def dibujar_coche(x: int, y: int, escala: float) -> None:
     arcade.draw_line(x+130*escala, y+150*escala, x+130*escala, y+190*escala, arcade.color.BLACK, 2.5) #ventana coche delineado2
 # Lista de coches: (x, y, escala)
 lista_coches = [
-    (50, 100, 1),   # Coche al fondo (pequeño)
-    (300, 120, 1),  # Coche mediano
-    (600, 50, 1),   # Coche en primer plano (grande)
-    (150, 250, 1)   # Otro coche pequeño
+    (50, 00, 1),  
+    (250, 00, 1),  
+    (450, 00, 1),   
+    (650, 00, 1)   
 ]
 for x, y,escala in lista_coches:
     dibujar_coche(x, y, escala)
