@@ -1,0 +1,54 @@
+[{"room":"Bedroom2",
+    "description":"To the north is the Bedroom1, to the east is the south hall",
+    "north":3,
+  "south":null,
+  "east":1,
+  "west":null
+ },
+ 
+ {"room":"South Hall",
+    "description":"To the north is the north hall, to the east is the diving room and to the west is the bedroom2",
+  "north":4,
+  "south":null,
+  "east":2,
+  "west":0
+ },
+ 
+ {"room":"Diving Room",
+    "description":"To the north is the kitchen, to the west is the south hall",
+  "north":5,
+  "south":null,
+  "east":null,
+  "west":1
+ },
+ {"room":"Bedroom1",
+    "description":"To the south is the Bedroom2, to the east is the north hall",
+  "north":null,
+  "south":0,
+  "east":4,
+  "west":null
+ },
+ {"room":"North Hall",
+    "description":"To the north is the Balcony, to the south is the south hall, to the east is the kitchen and to the west is the bedroom1",
+  "north":6,
+  "south":1,
+  "east":5,
+  "west":3
+ },
+
+ {"room":"kitchen",
+    "description":"To the west is the north hall, to the south is the diving room ",
+  "north":null,
+  "south":2,
+  "east":null,
+  "west":4
+ },
+ 
+ {"room":"Balcony",
+    "description":"To the south is the north hall",
+  "north":null,
+  "south":4,
+  "east":null,
+  "west":null
+ }
+]

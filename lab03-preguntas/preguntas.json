@@ -18,5 +18,10 @@
       "pregunta": "¿La tortilla de patata lleva cebolla?",
       "correcta": "Jamás",
       "opciones": ["Jamás", "Sí", "No con excepciones", "Tal vez"]
+    },
+    {
+      "pregunta": "¿Cuál es el río más largo del mundo?",
+      "correcta": "Nilo",
+      "opciones": ["Nilo", "Amazonas", "Yangtsé"]
     }
 ]
