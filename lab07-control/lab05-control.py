@@ -38,7 +38,7 @@ class MyGame(arcade.Window):
     """ Our Custom Window Class"""
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Lab 7 - User Control")
-        arcade.set_background_color(arcade.color.SKY_BLUE)
+        arcade.set_background_color(arcade.color.RED)
         self.coche = coche(1, 1, 1,0,0)
         joysticks = arcade.get_joysticks()
          # If we have a game controller plugged in, grab it and
@@ -73,6 +73,7 @@ class MyGame(arcade.Window):
             print(self.joystick.x, self.joystick.y)
             self.coche.change_x = self.joystick.x * 5
             self.coche.change_y = -self.joystick.y * 5
+    
 
 def main():
     window = MyGame()
