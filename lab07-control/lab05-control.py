@@ -1,18 +1,20 @@
 """ Lab 7 - User Control """
-
 import arcade
-MOVEMENT_SPEED = 3
 
 # --- Constants ---
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+class Paisaje:
+    pass
+
 class coche:
-    def __init__(self, position_x, position_y,escala, change_x, change_y):
+    def __init__(self, position_x, position_y,escala, change_x, change_y,MOVEMENT_SPEED = 3):
         self.position_x=position_x
         self.position_y=position_y
         self.escala=escala
         self.change_x=change_x
         self.change_y=change_y
+        self.MOVEMENT_SPEED = MOVEMENT_SPEED
     def draw(self):
             arcade.draw_polygon_filled([[self.position_x+40*self.escala, self.position_y+150*self.escala], [self.position_x+80*self.escala, self.position_y+200*self.escala], [self.position_x+180*self.escala, self.position_y+200*self.escala], [self.position_x+230*self.escala, self.position_y+150*self.escala]], arcade.color.COFFEE)
             arcade.draw_rect_filled(arcade.XYWH(155+self.position_x*self.escala, 120+self.position_y*self.escala, 300*self.escala, 60*self.escala), arcade.color.COFFEE)
@@ -39,7 +41,7 @@ class MyGame(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Lab 7 - User Control")
         arcade.set_background_color(arcade.color.SKY_BLUE)
-        self.coche = coche(1, 1, 1,0,0)
+        self.coche = coche(0, 0, 1,0,0)
         joysticks = arcade.get_joysticks()
          # If we have a game controller plugged in, grab it and
         # make an instance variable out of it.
@@ -53,15 +55,18 @@ class MyGame(arcade.Window):
         self.clear()
         
         self.coche.draw()
+    def on_mouse_motion(self, x, y, dx, dy):
+        self.coche.position_x = x-155
+        self.coche.position_y = y-120
     def on_key_press(self, key, modifiers):
         if key == arcade.key.LEFT:
-            self.coche.change_x -= MOVEMENT_SPEED
+            self.coche.change_x -= self.coche.MOVEMENT_SPEED
         elif key == arcade.key.RIGHT:
-            self.coche.change_x += MOVEMENT_SPEED
+            self.coche.change_x += self.coche.MOVEMENT_SPEED
         elif key == arcade.key.UP:
-            self.coche.change_y += MOVEMENT_SPEED
+            self.coche.change_y += self.coche.MOVEMENT_SPEED
         elif key == arcade.key.DOWN:
-            self.coche.change_y -= MOVEMENT_SPEED
+            self.coche.change_y -= self.coche.MOVEMENT_SPEED
     def on_key_release(self, key, modifiers):
         if key == arcade.key.LEFT or key == arcade.key.RIGHT:
             self.coche.change_x = 0
@@ -70,7 +75,6 @@ class MyGame(arcade.Window):
     def on_update(self, delta_time):
         self.coche.on_update(delta_time)
         if self.joystick:
-            print(self.joystick.x, self.joystick.y)
             self.coche.change_x = self.joystick.x * 5
             self.coche.change_y = -self.joystick.y * 5
 
