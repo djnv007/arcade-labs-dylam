@@ -1,16 +1,22 @@
+import math
 import arcade
 import random
 COIN_SCALE=0.50
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 #----------------------------------------
-COIN_COUNT=50  
+COIN_COUNT=20  
 class Coin(arcade.Sprite):
-    def __init__(self, position_x, position_y):
-        self.center_x = position_x
-        self.center_y = position_y
+    def __init__(self, filename, scale ):
+        super().__init__(filename, scale)
+    def reset_pos(self):
+         self.center_x= random.randint(0, SCREEN_WIDTH-10)
+         self.center_y=  SCREEN_HEIGHT
     def on_update(self):
-        self.center_y -= 5
+        self.center_y-=3
+        if self.top < 0:
+            self.center_x= random.randint(0, SCREEN_WIDTH)
+            self.center_y= SCREEN_HEIGHT
 
 class MyGame(arcade.Window):
    
@@ -27,7 +33,7 @@ class MyGame(arcade.Window):
         self.coin_list = arcade.SpriteList()
         self.player_sprite = arcade.Sprite(":resources:images/animated_characters/female_person/femalePerson_idle.png", 1)
         self.player_sprite.center_x = SCREEN_WIDTH // 2
-        self.player_sprite.center_y = SCREEN_HEIGHT // 2
+        self.player_sprite.center_y = 80
         self.player_list.append(self.player_sprite)
         for i in range (COIN_COUNT):
             coin=Coin(":resources:images/items/coinGold.png",COIN_SCALE)
@@ -43,12 +49,23 @@ class MyGame(arcade.Window):
         self.coin_list.update()
         hit_list = arcade.check_for_collision_with_list(self.player_sprite,self.coin_list)
         for coin in hit_list:
-            coin.remove_from_sprite_lists()
+            coin.reset_pos()
             self.score += 1
+        for coin in self.coin_list:
+            coin.on_update()
     def on_mouse_motion(self,x,y,dx,dy):
         self.player_sprite.center_x = x
         self.player_sprite.center_y = y
-    
+    def on_key_press(self, key, modifiers):
+        if key == arcade.key.W:
+            self.player_sprite.center_y += 30
+        elif key == arcade.key.S:
+            self.player_sprite.center_y -= 30
+        elif key == arcade.key.A:
+            self.player_sprite.center_x -= 30
+        elif key == arcade.key.D:
+            self.player_sprite.center_x += 30
+
 def main():
     window = MyGame()
     window.setup()
