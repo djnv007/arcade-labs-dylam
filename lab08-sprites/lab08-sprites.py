@@ -48,6 +48,7 @@ class MyGame(arcade.Window):
         arcade.draw_text(f"Score: {self.score}",50.0,50.0,arcade.color.WHITE, 20)
     def on_update(self, delta_time):
         self.coin_list.update()
+        self.player_list.update()
         hit_list = arcade.check_for_collision_with_list(self.player_sprite,self.coin_list)
         for coin in hit_list:
             coin.reset_pos()
@@ -59,14 +60,18 @@ class MyGame(arcade.Window):
         self.player_sprite.center_y = y
     def on_key_press(self, key, modifiers):
         if key == arcade.key.W:
-            self.player_sprite.center_y += 30
+            self.player_sprite.change_y = 30
         elif key == arcade.key.S:
-            self.player_sprite.center_y -= 30
+            self.player_sprite.change_y = -30
         elif key == arcade.key.A:
-            self.player_sprite.center_x -= 30
+            self.player_sprite.change_x = -30
         elif key == arcade.key.D:
-            self.player_sprite.center_x += 30
-
+            self.player_sprite.change_x = 30
+    def on_key_release(self, key, modifiers):
+        if key == arcade.key.W or key == arcade.key.S:
+            self.player_sprite.change_y = 0
+        elif key == arcade.key.A or key == arcade.key.D:
+            self.player_sprite.change_x = 0
 def main():
     window = MyGame()
     window.setup()
