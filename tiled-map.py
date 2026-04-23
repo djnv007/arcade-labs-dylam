@@ -35,7 +35,9 @@ class GameView(arcade.View):
         self.player_sprite.center_x = 30
         self.player_sprite.center_y = 260
         self.player_list.append(self.player_sprite)
-
+        self.imagen= arcade.Sprite("./imagenes/fondos/background_1.png")
+        self.imagen_list=arcade.SpriteList()
+        self.imagen_list.append(self.imagen)
         self.tile_map = arcade.load_tilemap(
             "C:/Users/Dylam uah/OneDrive - Universidad de Alcala/PRIMERO/2ndo Cuatrimestre/TECNOLOGIA VIDEOJUEGOS/tilemap/lobito.tmj", scaling=TILE_SPRITE_SCALING
         )
@@ -52,7 +54,7 @@ class GameView(arcade.View):
         self.player_list.draw()
         self.coordinates.draw()
         self.camera.use()
-        
+        self.imagen_list.draw()
 
         
 
