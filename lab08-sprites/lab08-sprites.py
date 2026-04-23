@@ -17,6 +17,7 @@ class Coin(arcade.Sprite):
         if self.top < 0:
             self.center_x= random.randint(0, SCREEN_WIDTH)
             self.center_y= SCREEN_HEIGHT
+            
 
 class MyGame(arcade.Window):
    
