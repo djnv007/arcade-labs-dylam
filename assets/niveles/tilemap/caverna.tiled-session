@@ -1,0 +1,107 @@
+{
+    "activeFile": "lobito.tmj",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "Todos los archivos (*)",
+    "fileStates": {
+        "22e1335d-e522-46f6-9921-4359dea3b33b.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Gemini_Generated_Image_m7rk9fm7rk9fm7rk.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Gemini_Generated_Image_m7rk9fm7rk9fm7rk1-ezgif.com-resize.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "background_1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "background_2.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "background_3.tsx": {
+            "scaleInDock": 0.0625,
+            "scaleInEditor": 1
+        },
+        "background_4.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "background_5.tsx": {
+            "scaleInDock": 0.125,
+            "scaleInEditor": 1
+        },
+        "background_6.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "garabato.tsx": {
+            "dynamicWrapping": false
+        },
+        "lobito.tmj": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 65.33333333333337,
+                "y": 569.3333333333334
+            }
+        },
+        "slimemalo.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.75
+        },
+        "tileset2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "frame.defaultDuration": 110,
+    "last.imagePath": "C:/Users/Dylam uah/OneDrive - Universidad de Alcala/PRIMERO/2ndo Cuatrimestre/TECNOLOGIA VIDEOJUEGOS/imagenes/fondos",
+    "map.height": 12,
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 129,
+    "openFiles": [
+        "lobito.tmj",
+        "garabato.tsx",
+        "slimemalo.tsx"
+    ],
+    "project": "caverna.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "slimemalo.tsx",
+        "lobito.tmj",
+        "Gemini_Generated_Image_m7rk9fm7rk9fm7rk1-ezgif.com-resize.tsx",
+        "background_4.tsx",
+        "background_3.tsx",
+        "background_2.tsx",
+        "background_1.tsx",
+        "22e1335d-e522-46f6-9921-4359dea3b33b.tsx",
+        "Gemini_Generated_Image_m7rk9fm7rk9fm7rk.tsx",
+        "tileset2.tsx",
+        "tileset.tsx",
+        "background_5.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    },
+    "tileset.useTransparentColor": true
+}

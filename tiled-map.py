@@ -1,5 +1,7 @@
+import math
 import arcade
-
+import os
+from pathlib import Path
 TILE_SPRITE_SCALING = 1
 PLAYER_SCALING = 1
 
@@ -12,7 +14,8 @@ WINDOW_TITLE = "Sprite Tiled Map with Levels Example"
 MOVEMENT_SPEED = 5
 JUMP_SPEED = 23
 GRAVITY = 1.1
-
+BASE_DIR = Path(__file__).resolve().parent
+MAP_FILE= BASE_DIR / "assets" / "niveles" / "tilemap" / "lobito.tmj"
 
 class GameView(arcade.View):
     """Main application class."""
@@ -35,18 +38,51 @@ class GameView(arcade.View):
         self.player_sprite.center_x = 30
         self.player_sprite.center_y = 260
         self.player_list.append(self.player_sprite)
-        self.imagen= arcade.Sprite("./imagenes/fondos/background_1.png")
-        self.imagen_list=arcade.SpriteList()
-        self.imagen_list.append(self.imagen)
+        
+
+        layer_options = {
+            "suelo": {
+                "use_spatial_hash": True,
+                }
+        }
+
         self.tile_map = arcade.load_tilemap(
-            "C:/Users/Dylam uah/OneDrive - Universidad de Alcala/PRIMERO/2ndo Cuatrimestre/TECNOLOGIA VIDEOJUEGOS/tilemap/lobito.tmj", scaling=TILE_SPRITE_SCALING
-        )
+            "D:/nivel-prueba/nivel-prueba.tmj", scaling=TILE_SPRITE_SCALING,layer_options=layer_options)
+        
 
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player_sprite, walls=self.scene["suelo"], gravity_constant=GRAVITY
         )
-        
+        print(f"DEBUG: Las capas disponibles son: {self.tile_map.object_lists.keys()}")
+        print(f"DEBUG: Las capas disponibles son: {self.tile_map.sprite_lists.keys()}")
+        self.enemies_layer = self.tile_map.object_lists["Enemies"]
+        enemies_layer = self.tile_map.object_lists["Enemies"]
+        for enemy_marker in enemies_layer:
+            coordinates = self.tile_map.get_cartesian(
+                enemy_marker.shape[0], enemy_marker.shape[1]
+            )
+            enemy_type = enemy_marker.properties["type"]
+            if enemy_type == "zombie":
+                enemy= arcade.Sprite(
+            ":resources:images/animated_characters/female_person/femalePerson_idle.png")
+            enemy.center_x = math.floor(
+                coordinates[0] * 1 * self.tile_map.tile_width
+            )
+            enemy.center_y = math.floor(
+                (coordinates[1] + 1) * (self.tile_map.tile_height * 1)
+            )
+            if "boundary_left" in enemy_marker.properties:
+                enemy.boundary_left = enemy_marker.properties["boundary_left"]
+            if "boundary_right" in enemy_marker.properties:
+                enemy.boundary_right = enemy_marker.properties["boundary_right"]
+            if "change_x" in enemy_marker.properties:
+                enemy.change_x = enemy_marker.properties["change_x"]
+
+            self.scene.add_sprite("Enemies", enemy)
+            
+            
+            
     def on_draw(self):
       
         self.clear()
@@ -54,7 +90,7 @@ class GameView(arcade.View):
         self.player_list.draw()
         self.coordinates.draw()
         self.camera.use()
-        self.imagen_list.draw()
+   
 
         
 
