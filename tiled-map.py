@@ -15,8 +15,7 @@ MOVEMENT_SPEED = 5
 JUMP_SPEED = 23
 GRAVITY = 1.1
 BASE_DIR = Path(__file__).resolve().parent
-MAP_FILE= BASE_DIR / "assets" / "niveles" / "tilemap" / "lobito.tmj"
-
+MAP_FILE= BASE_DIR / "assets" / "maps"/"nadir.tmj"
 class GameView(arcade.View):
     """Main application class."""
 
@@ -52,10 +51,11 @@ class GameView(arcade.View):
 
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
         self.physics_engine = arcade.PhysicsEnginePlatformer(
-            self.player_sprite, walls=self.scene["suelo"], gravity_constant=GRAVITY
+            self.player_sprite, walls=self.scene["walls"], gravity_constant=GRAVITY,platforms= self.scene["Platforms"]
         )
         print(f"DEBUG: Las capas disponibles son: {self.tile_map.object_lists.keys()}")
         print(f"DEBUG: Las capas disponibles son: {self.tile_map.sprite_lists.keys()}")
+
         self.enemies_layer = self.tile_map.object_lists["Enemies"]
         enemies_layer = self.tile_map.object_lists["Enemies"]
         for enemy_marker in enemies_layer:
